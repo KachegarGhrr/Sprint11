@@ -1,0 +1,19 @@
+.mainForm {
+    display: active;
+  }
+
+.mainForm.active {
+    display: none;
+  }
+
+.editForm {
+    display: none;
+}
+
+.editForm.active {
+    display: active;
+}
+
+.active {
+    display: block;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="LK.css">
+</head>
+<body>
+    <h1>Личный кабинет</h1>
+
+    <form class="mainForm" id="userForm1">
+        <div>
+            <input id="userName" type="text" placeholder="Имя">
+        </div>
+        <div>
+            <input id="userBirthdate" type="text" placeholder="Дата рождения">
+        </div>
+        <div>
+            <label for="Vegan">Вегетарианец</label>
+            <input name="pitanieType" id="Vegan" type="radio" value="vegan">
+            <br>
+            <label for="Myasoed">Мясоед</label>
+            <input name="pitanieType" id="Myasoed" type="radio" value="myasoed">
+        </div>
+
+        <h2>Привычки</h2>
+        <div>
+            <label for="userQuestion1">Занимаюсь спортом</label>
+            <input id="userQuestion1" type="checkbox" value="Sport">
+        </div>
+        <div>
+            <label for="userQuestion2">Курю</label>
+            <input id="userQuestion2" type="checkbox" value="Kurit">
+        </div>
+        <div>
+            <label for="userQuestion3">Пью воду</label>
+            <input id="userQuestion3" type="checkbox" value="Voda">
+        </div>
+
+        <button type="submit" name="save">Сохранить</button>
+
+    </form>
+
+    <form class="editForm" id="userForm2">
+        <div><h2>Имя: </h2><h3 id="fieldName"></h3></div>
+        <div><h2>Дата рождения: </h2><h3 id="fieldBirthdate"></h3></div>
+        <div><h2>Что кушает: </h2><h3 id="fieldPitanie"></h3></div>
+        <div><h2>Привычки: </h2> <h3 id="fieldQuestion"></h3></div>
+        <button type="button">Редактировать</button>
+    </form>
+
+    <script>
+        let user = {};
+
+        document.getElementById('userForm1').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const userName = document.getElementById('userName').value;
+            const userBirthdate = document.getElementById('userBirthdate').value;
+            const pitanieType = document.querySelector('input[name="pitanieType"]:checked').value;
+            const isQuestion1 = document.getElementById('userQuestion1').checked;
+            const isQuestion2 = document.getElementById('userQuestion2').checked;
+            const isQuestion3 = document.getElementById('userQuestion3').checked;
+
+            user = {
+                name: userName,
+                birthdate: userBirthdate,
+                type: pitanieType,
+                question1: isQuestion1,
+                question2: isQuestion2,
+                question3: isQuestion3
+            };
+
+            document.getElementById('fieldName').textContent = user.name;
+            document.getElementById('fieldBirthdate').textContent = user.birthdate;
+            document.getElementById('fieldPitanie').textContent = user.type;
+
+            const userQuestion = [];
+            if (user.question1) userQuestion.push('Занимаюсь спортом');
+            if (user.question2) userQuestion.push('Курю');
+            if (user.question3) userQuestion.push('Пью воду');
+            document.getElementById('fieldQuestion').textContent = userQuestion.join(', ');
+
+            document.getElementById('userForm1').classList.toggle('active');
+            document.getElementById('userForm2').classList.toggle('active');
+        });
+
+            document.getElementById('userForm2').querySelector('button').addEventListener('click', function(event) {
+            document.getElementById('userForm1').classList.toggle('active');
+            document.getElementById('userForm2').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
