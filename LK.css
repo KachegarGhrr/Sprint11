@@ -1,5 +1,12 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .mainForm {
     display: active;
+    width: 40%;
   }
 
 .mainForm.active {
@@ -16,4 +23,9 @@
 
 .active {
     display: block;
+}
+
+.knopka {
+  display: flex;
+  justify-content: center
 }
