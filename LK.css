@@ -22,10 +22,15 @@
 }
 
 .active {
-    display: block;
+    display: block !important;
 }
 
 .knopka {
   display: flex;
   justify-content: center
+}
+
+.form {
+  display: none;
+  width: 40%;
 }

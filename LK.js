@@ -28,11 +28,17 @@ document.getElementById('userForm1').addEventListener('submit', function(event) 
     if (user.question3) userQuestion.push('Пью воду');
     document.getElementById('fieldQuestion').textContent = userQuestion.join(', ');
 
-    document.getElementById('userForm1').classList.toggle('active');
-    document.getElementById('userForm2').classList.toggle('active');
+    document.querySelectorAll('.form').forEach(function(item) {
+        item.classList.remove('active')
+    });
+
+    document.getElementById('userForm2').classList.add('active')
+
     });
 
     document.getElementById('userForm2').querySelector('button').addEventListener('click', function(event) {
-    document.getElementById('userForm1').classList.toggle('active');
-    document.getElementById('userForm2').classList.toggle('active');
+        document.querySelectorAll('.form').forEach(function(item) {
+            item.classList.remove('active')
+        });
+        document.getElementById('userForm1').classList.add('active')
     });
